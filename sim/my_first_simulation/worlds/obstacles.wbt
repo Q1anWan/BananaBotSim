@@ -1,0 +1,126 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/WoodenBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+
+WorldInfo {
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
+  position -0.4999999999999999 -9.708456101515132e-16 4.422299928112637
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 1 1
+}
+WoodenBox {
+  translation -0.346548 -0.202759 0.05
+  rotation 0 0 1 -0.523595307179586
+  size 0.1 0.1 0.1
+  mass 1
+}
+WoodenBox {
+  translation -0.37336 0.386637 0.05
+  name "wooden box(2)"
+  size 0.1 0.1 0.1
+  mass 1
+}
+WoodenBox {
+  translation 0.301 -0.222602 0.05
+  rotation 0 0 1 0.523599
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+  mass 1
+}
+E-puck {
+  translation 0.1 0 0
+  rotation 0 0 1 -1.047195307179586
+  controller "EPuckGoForward"
+}
+Solid {
+  translation 0.34 0 0.2
+  children [
+    Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry DEF BALL_GEOMETRY Sphere {
+        radius 0.05
+        subdivision 2
+      }
+    }
+  ]
+  name "ball1"
+  boundingObject USE BALL_GEOMETRY
+  physics Physics {
+  }
+}
+Solid {
+  translation -0.2 0 0.25
+  children [
+    DEF BALL2_SHAPE Shape {
+      appearance PBRAppearance {
+        roughness 0.5
+        metalness 0.5
+      }
+      geometry Sphere {
+        radius 0.1
+        subdivision 2
+      }
+    }
+  ]
+  name "ball2"
+  boundingObject USE BALL2_SHAPE
+  physics Physics {
+  }
+}
+Solid {
+  translation 0 0.5 0.05
+  children [
+    DEF WALL Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 1 0.01 0.1
+      }
+    }
+  ]
+  name "wall0"
+  boundingObject USE WALL
+}
+Solid {
+  translation 0 -0.5 0.05
+  children [
+    USE WALL
+  ]
+  name "wall1"
+  boundingObject USE WALL
+}
+Solid {
+  translation 0.5 0 0.05
+  rotation 0 0 1 1.5707963267948966
+  children [
+    USE WALL
+  ]
+  name "wall2"
+  boundingObject USE WALL
+}
+Solid {
+  translation -0.5 0 0.05
+  rotation 0 0 1 1.5707963267948966
+  children [
+    USE WALL
+  ]
+  name "wall3"
+  boundingObject USE WALL
+}

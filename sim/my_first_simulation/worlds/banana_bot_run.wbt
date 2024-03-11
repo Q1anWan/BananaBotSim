@@ -1,0 +1,117 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/WoodenBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "../protos/BenchRobot.proto"
+
+WorldInfo {
+  basicTimeStep 5
+}
+Viewpoint {
+  orientation -0.02958248763129787 -0.02875667029377935 -0.9991486027309245 1.600052335224909
+  position 0.039184483281812316 2.0807584386249904 0.30276629406368577
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 5 5
+}
+DEF BOX_200 WoodenBox {
+  translation -0.89336 -1.33336 0.1
+  name "wooden box 200_0"
+  size 0.2 0.2 0.2
+  mass 1
+}
+DEF BOX_200 WoodenBox {
+  translation 0.818645 -0.814603 0.1
+  rotation 0 0 1 0.261799
+  name "wooden box 200_1"
+  size 0.2 0.2 0.2
+  mass 1
+}
+DEF BOX_100 WoodenBox {
+  translation -1.36464 -0.146134 0.05
+  rotation 0 0 1 -0.523595307179586
+  name "wooden box 100_0"
+  size 0.1 0.1 0.1
+  mass 1
+}
+DEF BOX_100 WoodenBox {
+  translation 0.673451 1.56392 0.05
+  rotation 0 0 -1 0.523595
+  name "wooden box 100_1"
+  size 0.1 0.1 0.1
+  mass 1
+}
+DEF BOX_100 WoodenBox {
+  translation 1.02293 -1.57076 0.05
+  rotation 0 0 -1 0.523595
+  name "wooden box 100_2"
+  size 0.1 0.1 0.1
+  mass 1
+}
+DEF BOX_200 WoodenBox {
+  translation -0.75003 1.06734 0.1
+  rotation 0 0 1 -0.261795307179586
+  name "wooden box 200_2"
+  size 0.2 0.2 0.2
+  mass 1
+}
+DEF BOX_200 WoodenBox {
+  translation 1.28768 0.606637 0.1
+  rotation 0 0 1 0.523599
+  name "wooden box 200_3"
+  size 0.2 0.2 0.2
+  mass 1
+}
+Solid {
+  translation 0 2.505 0.05
+  children [
+    DEF WALL Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.756863 0.945098
+        roughness 0.5
+        metalness 0
+      }
+      geometry Box {
+        size 5 0.01 0.2
+      }
+    }
+  ]
+  name "wall0"
+  boundingObject USE WALL
+}
+Solid {
+  translation 0 -2.505 0.05
+  children [
+    USE WALL
+  ]
+  name "wall1"
+  boundingObject USE WALL
+}
+Solid {
+  translation 2.505 0 0.05
+  rotation 0 0 1 1.5707963267948966
+  children [
+    USE WALL
+  ]
+  name "wall2"
+  boundingObject USE WALL
+}
+Solid {
+  translation -2.505 0 0.05
+  rotation 0 0 1 1.5707963267948966
+  children [
+    USE WALL
+  ]
+  name "wall3"
+  boundingObject USE WALL
+}
+BenchRobot {
+  translation 0 0 0.11
+  rotation 0 1 0 0
+}

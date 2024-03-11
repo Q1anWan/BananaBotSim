@@ -1,0 +1,87 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/WoodenBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "../protos/FourWheelsRobot_x.proto"
+
+WorldInfo {
+  basicTimeStep 64
+}
+Viewpoint {
+  orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
+  position 5.461577732319591e-16 -7.579461686501575e-33 2.4596759440129508
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 1 1
+}
+WoodenBox {
+  translation -0.346548 -0.202759 0.05
+  rotation 0 0 1 -0.523595307179586
+  size 0.1 0.1 0.1
+  mass 1
+}
+WoodenBox {
+  translation -0.37336 0.386637 0.05
+  name "wooden box(2)"
+  size 0.1 0.1 0.1
+  mass 1
+}
+WoodenBox {
+  translation 0.301 -0.222602 0.05
+  rotation 0 0 1 0.523599
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+  mass 1
+}
+Solid {
+  translation 0 0.5 0.05
+  children [
+    DEF WALL Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.756863 0.945098
+        roughness 0.5
+        metalness 0
+      }
+      geometry Box {
+        size 1 0.01 0.1
+      }
+    }
+  ]
+  name "wall0"
+  boundingObject USE WALL
+}
+Solid {
+  translation 0 -0.5 0.05
+  children [
+    USE WALL
+  ]
+  name "wall1"
+  boundingObject USE WALL
+}
+Solid {
+  translation 0.5 0 0.05
+  rotation 0 0 1 1.5707963267948966
+  children [
+    USE WALL
+  ]
+  name "wall2"
+  boundingObject USE WALL
+}
+Solid {
+  translation -0.5 0 0.05
+  rotation 0 0 1 1.5707963267948966
+  children [
+    USE WALL
+  ]
+  name "wall3"
+  boundingObject USE WALL
+}
+FourWheelsRobot_x {
+  translation 0 0 0.07
+}

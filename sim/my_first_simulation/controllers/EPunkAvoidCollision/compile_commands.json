@@ -1,0 +1,19 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-O3",
+      "-DNDEBUG",
+      "-I.",
+      "-I/usr/local/webots/include/controller/cpp",
+      "-o",
+      "build/release/EPunkAvoidCollision.o",
+      "EPunkAvoidCollision.cpp"
+    ],
+    "directory": "/home/cat/graduate_robot/sim/my_first_simulation/controllers/EPunkAvoidCollision",
+    "file": "/home/cat/graduate_robot/sim/my_first_simulation/controllers/EPunkAvoidCollision/EPunkAvoidCollision.cpp",
+    "output": "/home/cat/graduate_robot/sim/my_first_simulation/controllers/EPunkAvoidCollision/build/release/EPunkAvoidCollision.o"
+  }
+]

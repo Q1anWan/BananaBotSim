@@ -1,0 +1,128 @@
+#VRML_SIM R2023b utf8
+PROTO BenchRobot [
+  field SFString   robotName         "benchRobot"
+  field SFVec3f    translation  0 0 0
+  field SFRotation rotation     0 0 1 0
+  field SFFloat    bodyMass     1
+  field SFFloat    wheelMass    1
+  
+  field SFString   motorLeftName   "motor_0"
+  field SFString   motorRightName  "motor_1"
+  field SFString   insName    "ins"
+  field SFString   accelName  "accel"
+  field SFString   gyroName   "gyro"
+
+  field SFString   controller  "bench_robot_controller"
+]
+{
+    Robot {
+        name IS robotName
+        translation IS translation
+        rotation IS rotation
+        children [
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 1 0
+              anchor 0 0.11 -0.05
+            }
+            device [
+              RotationalMotor {
+                name IS motorLeftName
+              }
+            ]
+            endPoint DEF WHEEL0 Solid {
+              translation 0 0.11 -0.05
+              rotation 1 0 0 1.5708
+              children [
+                DEF WHEEL_SHAPE Shape {
+                  appearance PBRAppearance {
+                    baseColor 0 1 0
+                    roughness 0.5
+                    metalness 0
+                    normalMap ImageTexture {
+                      url [
+                        "https://raw.githubusercontent.com/cyberbotics/webots/released/projects/default/worlds/textures/red_brick_wall.jpg"
+                      ]
+                    }
+                  }
+                  geometry Cylinder {
+                    height 0.02
+                    radius 0.05
+                  }
+                }
+              ]
+              name "wheel0"
+              boundingObject USE WHEEL_SHAPE
+              physics DEF WHEEL_PHY Physics {
+                density -1
+                mass IS wheelMass
+              }
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 -1 0
+              anchor 0 -0.11 -0.05
+            }
+            device [
+              RotationalMotor {
+                name IS motorRightName
+              }
+            ]
+            endPoint DEF WHEEL1 Solid {
+              translation 0 -0.11 -0.05
+              rotation 1 0 0 1.5708
+              children [
+                USE WHEEL_SHAPE
+              ]
+              name "wheel1"
+              boundingObject USE WHEEL_SHAPE
+              physics USE WHEEL_PHY
+            }
+          }
+          DEF SHAPE_BODY Shape {
+            appearance PBRAppearance {
+              baseColor 1 0 0
+              roughness 1
+              metalness 0
+            }
+
+            geometry Box {
+              size 0.2 0.2 0.1
+            }
+          }
+          Transform {
+            translation 0.08 0 0.1
+            scale 0.2 1 1
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0 0 1
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cone {
+                  bottomRadius 0.05
+                  height 0.1
+                }
+              }
+            ]
+          }
+          InertialUnit {
+            name IS insName
+          }
+          Accelerometer {
+            name IS accelName
+          }
+          Gyro {
+            name IS gyroName
+          }
+        ]
+        boundingObject USE SHAPE_BODY
+        physics Physics {
+            density -1
+            mass IS bodyMass
+        }
+        controller IS controller
+      }
+}

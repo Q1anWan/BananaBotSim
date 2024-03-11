@@ -1,0 +1,166 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/WoodenBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+
+WorldInfo {
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material2 "dumbbell"
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.5773501222467413 -0.5773475742227994 -0.5773531110860339 4.188789167178142
+  position -0.01282817523374935 0.036003640712374 1.7842666305760024
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 1 1
+}
+WoodenBox {
+  translation -0.346548 -0.202759 0.05
+  rotation 0 0 1 -0.523595307179586
+  size 0.1 0.1 0.1
+  mass 1
+}
+WoodenBox {
+  translation -0.37336 0.386637 0.05
+  name "wooden box(2)"
+  size 0.1 0.1 0.1
+  mass 1
+}
+WoodenBox {
+  translation 0.301 -0.222602 0.05
+  rotation 0 0 1 0.523599
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+  mass 1
+}
+E-puck {
+  translation 0.1 0 0
+  rotation 0 0 1 -1.047195307179586
+  controller "EPunkAvoidCollision"
+}
+Solid {
+  translation 0.34 0 0.2
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "../../red_brick_wall.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry DEF BALL_GEOMETRY Sphere {
+        radius 0.05
+        subdivision 2
+      }
+    }
+  ]
+  name "ball1"
+  boundingObject USE BALL_GEOMETRY
+  physics Physics {
+  }
+}
+Solid {
+  translation 0 0 0.09
+  rotation 0 1 0 1.5707963267948966
+  children [
+    DEF G0 Group {
+      children [
+        Pose {
+          translation 0 0 -0.04
+          children [
+            Shape {
+              geometry Sphere {
+                radius 0.03
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0 0 0.04
+          children [
+            Shape {
+              geometry Sphere {
+                radius 0.03
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Shape {
+          geometry Cylinder {
+            height 0.1
+            radius 0.01
+          }
+        }
+      ]
+    }
+  ]
+  name "dumbbell"
+  contactMaterial "dumbbell"
+  boundingObject USE G0
+  physics Physics {
+    density -1
+    mass 2
+    centerOfMass [
+      0 0 0.01
+    ]
+  }
+}
+Solid {
+  translation 0 0.5 0.05
+  children [
+    DEF WALL Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.756863 0.945098
+        roughness 0.5
+        metalness 0
+      }
+      geometry Box {
+        size 1 0.01 0.1
+      }
+    }
+  ]
+  name "wall0"
+  boundingObject USE WALL
+}
+Solid {
+  translation 0 -0.5 0.05
+  children [
+    USE WALL
+  ]
+  name "wall1"
+  boundingObject USE WALL
+}
+Solid {
+  translation 0.5 0 0.05
+  rotation 0 0 1 1.5707963267948966
+  children [
+    USE WALL
+  ]
+  name "wall2"
+  boundingObject USE WALL
+}
+Solid {
+  translation -0.5 0 0.05
+  rotation 0 0 1 1.5707963267948966
+  children [
+    USE WALL
+  ]
+  name "wall3"
+  boundingObject USE WALL
+}

@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "intelliSenseMode": "linux-gcc-x64",
+            "compilerArgs": [
+                "-I/usr/local/webots/include/controller/cpp",
+                "-I/usr/local/webots/include/controller/c"
+            ]
+        }
+    ],
+    "version": 4
+}
